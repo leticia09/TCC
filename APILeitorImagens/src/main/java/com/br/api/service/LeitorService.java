@@ -37,7 +37,6 @@ public class LeitorService {
 
     public List<String> read(String imagemNome) throws TesseractException, IOException {
 
-        List<List<String>> result = new ArrayList<>();
         List<String> resultGoogle = new ArrayList<>();
 
         List<String> listFiles = listFiles(directoryProcessPath);
@@ -51,18 +50,11 @@ public class LeitorService {
                 System.out.println(count+"/"+listFiles.size() + " -> " + file);
                 apiGoogleResult = googleCloudApiVision(directoryProcessPath + file);
                 resultGoogle.add(file + " - " + apiGoogleResult);
-                //String tesseractResult = null;
-                //tesseractResult = tesseract(file);
-                //resultGoogle.add(file + " - " + tesseractResult.replaceAll("\n", ""));
             } catch (IOException e) {
                 e.printStackTrace();
             }
 
         });
-
-        //result.add("Tesseract:");
-        //result.add(tesseractResult);
-        //result.add(resultGoogle);
 
         return resultGoogle;
     }

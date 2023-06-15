@@ -31,8 +31,4 @@ public class LeitorController {
         return leitorService.verify();
     }
 
-    @GetMapping(value = "/test")
-    public String test() {
-        return leitorService.verify();
-    }
 }
